@@ -11,8 +11,8 @@ import { CertificateProvider } from '../../providers/certificate/certificate';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public certificateProvider: CertificateProvider) {
-  	console.log('home');
+  constructor(public navCtrl: NavController) {
+
   }
 
 }

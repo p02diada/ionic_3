@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -11,8 +11,17 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CertificateProvider {
 
+  certificateList: any;
+  number: string;
+
   constructor(public http: Http) {
-    console.log('Hello CertificateProvider Provider');
+
   }
+
+  getCertificates(){
+  	return this.http.get('http://0.0.0.0:5000/ct/v1/get-entries?start=0&end=10')
+  		.map(res => res.json());
+  }
+
 
 }

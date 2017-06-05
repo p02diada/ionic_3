@@ -9,11 +9,13 @@ import { HomePage } from '../pages/home/home';
 import { CertificateProvider } from '../providers/certificate/certificate';
 
 import { HttpModule } from '@angular/http';
+import { CertificateListComponent } from '../components/certificate-list/certificate-list';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    CertificateListComponent
   ],
   imports: [
     BrowserModule,
