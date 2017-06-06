@@ -1,4 +1,42 @@
 <!-- Generated template for the CertificateListComponent component -->
-<div>
-  texto
-</div>
+<ion-row *ngFor='let certificate of certificateListObject; let i = index'  >
+
+  	<ion-col col-4 *ngIf="i % 2 == 0" [ngClass]="'par'" >
+  		{{certificate.subject}} 		
+ 	</ion-col>
+
+  	<ion-col col-4 *ngIf="i % 2 == 1" [ngClass]="'impar'" >
+  		{{certificate.subject}} 		
+ 	</ion-col>
+
+ 	<ion-col col-4 *ngIf="i % 2 == 0" [ngClass]="'par'" >
+ 		<div *ngFor='let domain of certificate.domains; let j = index' [ngStyle]="{'text-align': 'left'}">
+		    <ng-template [ngIf]="j<=2">
+		        {{domain}}
+		    </ng-template>
+		</div>
+		<ng-template [ngIf]="certificate.domains.length>3" >
+		        ...
+		</ng-template>
+  	</ion-col>
+
+ 	<ion-col col-4 *ngIf="i % 2 == 1" [ngClass]="'impar'" >
+ 		<div *ngFor='let domain of certificate.domains; let j = index' [ngStyle]="{'text-align': 'left'}">
+		    <ng-template [ngIf]="j<=2">
+		        {{domain}}
+		    </ng-template>
+		</div>
+		<ng-template [ngIf]="certificate.domains.length>3">
+		        ...
+		</ng-template>
+  	</ion-col>
+
+ 	<ion-col col-4 *ngIf="i % 2 == 0" [ngClass]="'par'" >
+		{{certificate.notAfter}}
+  	</ion-col>
+
+ 	<ion-col col-4 *ngIf="i % 2 == 1" [ngClass]="'impar'" >
+		{{certificate.notAfter}}
+  	</ion-col>
+
+</ion-row>

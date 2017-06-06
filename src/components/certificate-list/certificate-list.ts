@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CertificateProvider } from '../../providers/certificate/certificate';
-import { X509 } from 'jsrsasign';
+import * as jsrsasign from 'jsrsasign';
 
 
 /**
@@ -15,22 +15,45 @@ import { X509 } from 'jsrsasign';
 })
 export class CertificateListComponent {
 
-  certificateList: any;
+  certificateListObject: {
+    base64?: any,
+    hSerial?: any,
+    issuer?: any,
+    subject?: any,
+    notBefore?: any,
+    botAfter?: any,
+    pubKey?: any,
+    domains?: any
+  }[] = [];
 
   constructor(certificateProvider: CertificateProvider) {
 
   	certificateProvider.getCertificates().subscribe(leafEntries => {
 
-  			this.certificateList = [];
-  			var c = new X509();
-  			console.log(this.certificateList);
+  			var c = new jsrsasign.X509();
 
   			for (let leafEntry of leafEntries){
-  				this.certificateList.push(leafEntry['timestamped_entry']['signed_entry']);
-  				c.readCertPEM(leafEntry['timestamped_entry']['signed_entry']);
-  				console.log(c.getIssuerString());
+          c.readCertPEM(leafEntry['timestamped_entry']['signed_entry']);
+
+          let subjectString = c.getSubjectString();
+          let cnSubjectIndex = subjectString.indexOf("CN=") + 3;
+          let cnSubject = subjectString.slice(cnSubjectIndex);
+
+          let cert = {
+            base64: leafEntry['timestamped_entry']['signed_entry'],
+            hSerial: c.getSerialNumberHex(),
+            issuer: c.getIssuerString(),
+            subject: cnSubject,
+            notBefore: jsrsasign.zulutodate(c.getNotBefore()).toISOString().slice(0, 10),
+            notAfter: jsrsasign.zulutodate(c.getNotAfter()).toISOString().slice(0, 10),
+            pubKey: c.subjectPublicKeyRSA,
+            domains: c.getExtSubjectAltName()
+
+          }
+  				this.certificateListObject.push(cert);
   			}
 		});
+
   }
 
 
