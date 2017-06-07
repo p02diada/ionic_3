@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 export class CertificateProvider {
 
   certificateList: any;
-  url: string = 'http://0.0.0.0:5000/ct/v1';
+  url: string = 'http://192.168.1.111:5000/ct/v1';
 
   constructor(public http: Http) {
 

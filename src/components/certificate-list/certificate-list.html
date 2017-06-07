@@ -1,5 +1,6 @@
 <!-- Generated template for the CertificateListComponent component -->
-<ion-row *ngFor='let certificate of certificateListObject; let i = index'  >
+
+<ion-row *ngFor='let certificate of certificateListObject; let i = index'  (click)="showCertificateDetail(certificate)">
 
   	<ion-col col-4 *ngIf="i % 2 == 0" [ngClass]="'par'" >
   		{{certificate.subject}} 		

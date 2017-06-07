@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CertificateProvider } from '../../providers/certificate/certificate';
 import * as jsrsasign from 'jsrsasign';
+import { NavController } from 'ionic-angular';
+import { CertificatePage } from '../../pages/certificate/certificate';
 
 
 /**
@@ -22,11 +24,12 @@ export class CertificateListComponent {
     subject?: any,
     notBefore?: any,
     botAfter?: any,
-    pubKey?: any,
-    domains?: any
+    pubKeyHex?: any,
+    domains?: any,
+    signatureHex?: any,
   }[] = [];
 
-  constructor(certificateProvider: CertificateProvider) {
+  constructor(certificateProvider: CertificateProvider, public navController:NavController) {
 
   	certificateProvider.getCertificates().subscribe(leafEntries => {
 
@@ -46,14 +49,21 @@ export class CertificateListComponent {
             subject: cnSubject,
             notBefore: jsrsasign.zulutodate(c.getNotBefore()).toISOString().slice(0, 10),
             notAfter: jsrsasign.zulutodate(c.getNotAfter()).toISOString().slice(0, 10),
-            pubKey: c.subjectPublicKeyRSA,
-            domains: c.getExtSubjectAltName()
+            pubKeyHex: c.getPublicKeyHex(),
+            domains: c.getExtSubjectAltName(),
+            signatureHex: c.getSignatureValueHex(),
 
           }
   				this.certificateListObject.push(cert);
   			}
 		});
 
+  }
+
+  showCertificateDetail(certificate){
+    this.navController.push(CertificatePage, {
+      certificate:certificate,
+    });
   }
 
 

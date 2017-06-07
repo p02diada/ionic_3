@@ -1,0 +1,81 @@
+<!--
+  Generated template for the CertificatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar  color="primary">
+    <ion-title>
+      Certificate Detail
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-list no-lines>
+		<ion-list-header>
+			Serial
+		</ion-list-header>
+		<ion-item text-wrap>
+			
+			{{certificate.hSerial}}
+			
+		</ion-item>
+
+		<ion-list-header>
+			Issuer
+		</ion-list-header>
+		<ion-item text-wrap>
+			
+			{{certificate.issuer}}
+			
+		</ion-item>
+
+		<ion-list-header>
+			Valid
+		</ion-list-header>
+		<ion-item text-wrap>
+			
+			{{certificate.notBefore}}  ->  {{certificate.notAfter}}
+			
+		</ion-item>
+
+		<ion-list-header>
+			Hex Public Key
+		</ion-list-header>
+		<ion-item text-wrap>
+			
+			{{certificate.pubKeyHex}}
+			
+		</ion-item>
+
+		<ion-list-header>
+			Hex signature
+		</ion-list-header>
+		<ion-item text-wrap>
+			
+			{{certificate.signatureHex}}
+
+		</ion-item>
+
+		<ion-list-header>
+			Pem certificate
+		</ion-list-header>
+		<ion-item text-wrap>
+			
+			{{certificate.base64}}
+			
+		</ion-item>
+	</ion-list>
+
+</ion-content>
+
+<ion-fab bottom right floating>
+  <button ion-fab color="primary" (click)="downloadPem()"><ion-icon name="cloud-download"></ion-icon></button>
+</ion-fab>
+
+
