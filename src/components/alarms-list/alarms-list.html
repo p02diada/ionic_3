@@ -1,0 +1,53 @@
+<!-- Generated template for the AlarmsListComponent component -->
+<ion-list>
+
+	<div *ngFor='let alarm of alarmsListObject; let i = index'>
+
+		<ion-card >
+			<ion-card-content>
+				<ion-card-title>
+					<ion-row>
+						<ion-col >
+							<ion-icon name="pricetag">
+	      						
+	    					</ion-icon>
+						</ion-col>
+
+	  				
+	  					<ion-col col-8>
+							{{alarm.domain}}
+						</ion-col>
+
+						<ion-col >
+							<button ion-button color="danger" clear icon-only (click)="removeElement(alarm.domain,alarm.emails)">
+
+								<ion-icon name="trash"> </ion-icon>
+
+		    				</button>
+						</ion-col>
+
+					</ion-row>
+
+  				</ion-card-title>
+
+  				<ion-row>
+					<ion-col col-2>
+						<ion-icon name="mail">
+      						
+    					</ion-icon>
+					</ion-col>
+
+
+  					<ion-col col-10>
+						{{alarm.emails}}
+					</ion-col>
+
+				</ion-row>
+
+			</ion-card-content>
+
+		</ion-card>
+
+	</div>
+
+</ion-list>

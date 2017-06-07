@@ -12,14 +12,14 @@ import 'rxjs/add/operator/map';
 export class CertificateProvider {
 
   certificateList: any;
-  number: string;
+  url: string = 'http://0.0.0.0:5000/ct/v1';
 
   constructor(public http: Http) {
 
   }
 
   getCertificates(){
-  	return this.http.get('http://0.0.0.0:5000/ct/v1/get-entries?start=0&end=10')
+  	return this.http.get(this.url + '/get-entries?start=0&end=10')
   		.map(res => res.json());
   }
 

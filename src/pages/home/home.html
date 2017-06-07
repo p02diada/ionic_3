@@ -1,12 +1,26 @@
 <ion-header>
   <ion-navbar  color="primary">
-    <ion-title text-center>
-      Certificate Transparency
-    </ion-title>
+      <ion-row>
+          <ion-col>
+            <img src="assets/imgs/logo_labs.png">
+          </ion-col>
+
+        <ion-col >
+          <ion-title class="text_header">
+              <p>
+              Certificate Transparency
+              </p>            
+          </ion-title>
+
+        </ion-col>
+
+      </ion-row>
+
+
   </ion-navbar>
 </ion-header>
 
-<ion-content no-padding>
+<ion-content no-padding [ngStyle]="{'background-color':'#F5F5F5'}">
   <ion-grid >
   		<ion-row text-center>
   			<ion-col>
@@ -23,7 +37,10 @@
       <certificate-list>
 
       </certificate-list>
-
   </ion-grid>
-
 </ion-content>
+<ion-fab bottom right floating>
+  <button ion-fab color="primary" (click)="goToPage()"><ion-icon name="alarm"></ion-icon></button>
+</ion-fab>
+<--!
+        <img src="assets/imgs/logo_labs.png" class="img_header"> -->

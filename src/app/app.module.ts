@@ -6,16 +6,21 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { AlarmsPage } from '../pages/alarms/alarms';
 import { CertificateProvider } from '../providers/certificate/certificate';
 
 import { HttpModule } from '@angular/http';
 import { CertificateListComponent } from '../components/certificate-list/certificate-list';
+import { AlarmsProvider } from '../providers/alarms/alarms';
+import { AlarmsListComponent } from '../components/alarms-list/alarms-list';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    CertificateListComponent
+    AlarmsPage,
+    CertificateListComponent,
+    AlarmsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,13 +30,15 @@ import { CertificateListComponent } from '../components/certificate-list/certifi
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    AlarmsPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CertificateProvider
+    CertificateProvider,
+    AlarmsProvider
   ]
 })
 export class AppModule {}
