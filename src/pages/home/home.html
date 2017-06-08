@@ -39,8 +39,15 @@
       </certificate-list>
   </ion-grid>
 </ion-content>
+<!--
 <ion-fab bottom right floating>
   <button ion-fab color="primary" (click)="goToPage()"><ion-icon name="alarm"></ion-icon></button>
-</ion-fab>
-<--!
-        <img src="assets/imgs/logo_labs.png" class="img_header"> -->
+</ion-fab>-->
+
+ <ion-fab right bottom floating>
+    <button ion-fab color="primary"><ion-icon name="arrow-dropup"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab color="light" (click)="goToPage()"><ion-icon name="alarm"></ion-icon></button>
+      <button ion-fab color="light" (click)="addCertificateToLog()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>

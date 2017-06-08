@@ -55,6 +55,7 @@ export class AlarmsPage {
               arrayEmails = data.emails.split(',');
               this.alarmsProvider.addAlarm(data.domain, arrayEmails).subscribe(data => 
                 {this.alarmsProvider.getAlarms();
+                  console.log(data);
               });
             }
 

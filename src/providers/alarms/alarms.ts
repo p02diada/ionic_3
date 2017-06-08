@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 export class AlarmsProvider {
 
 	alarmsList: any;
-  url: string = 'http://192.168.1.111:5001/ct/v1';
+  url: string = 'http://192.168.4.65:5001/ct/v1';
 
 
   constructor(public http: Http) {
